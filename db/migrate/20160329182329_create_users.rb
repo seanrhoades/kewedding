@@ -9,5 +9,10 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+      #allows only one unique social network login per user
+      add_index :users, :uid
+      add_index :users, :provider
+      add_index :users, [:uid, :provider], unique: true
   end
 end
