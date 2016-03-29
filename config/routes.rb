@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  #comments route
+  resources :comments, only: [:new, :create]
+  root to: 'comments#new'
+
   #auth callback route
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/auth/failure', to: 'sessions#auth_fail'
